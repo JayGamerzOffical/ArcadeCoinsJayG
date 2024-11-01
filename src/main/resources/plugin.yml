@@ -1,0 +1,88 @@
+name: ArcadeCoinsJayG
+version: 1.0
+main: org.JayGamerz.arcadeCoinsJayG.ArcadeCoinsJayG
+api-version: 1.20
+description: A plugin for managing arcade coins in Minecraft.
+
+commands:
+  coins:
+    description: Main command for arcade coins.
+    usage: /coins <subcommand>
+    permission: arcadecoins.coins
+    aliases: []
+    subcommands:
+      balance:
+        description: Show your coin balance.
+        usage: /coins balance
+        permission: arcadecoins.coins.balance
+      add:
+        description: Add coins to a player.
+        usage: /coins add <player> <amount>
+        permission: arcadecoins.coins.add
+      remove:
+        description: Remove coins from a player.
+        usage: /coins remove <player> <amount>
+        permission: arcadecoins.coins.remove
+      set:
+        description: Set a player's coin balance.
+        usage: /coins set <player> <amount>
+        permission: arcadecoins.coins.set
+      check:
+        description: Check a player's coin balance.
+        usage: /coins check <player>
+        permission: arcadecoins.coins.check
+      convert:
+        description: Open the currency conversion menu.
+        usage: /coins convert
+        permission: arcadecoins.coins.convert
+      leaderboard:
+        description: Show the leaderboard for coin holders.
+        usage: /coins leaderboard
+        permission: arcadecoins.coins.leaderboard
+      dailyreward:
+        description: Claim your daily reward of coins.
+        usage: /coins dailyreward
+        permission: arcadecoins.coins.dailyreward
+      bwcoins:
+        description: Access BedWars coins.
+        usage: /coins bwcoins
+        permission: arcadecoins.coins.bwcoins
+      shop:
+        description: Open the coins shop.
+        usage: /coins shop
+        permission: arcadecoins.coins.shop
+
+permissions:
+  arcadecoins.coins:
+    description: Access to the main coins command.
+    default: true
+  arcadecoins.coins.balance:
+    description: Allows players to check their coin balance.
+    default: true
+  arcadecoins.coins.add:
+    description: Allows players to add coins to others.
+    default: op
+  arcadecoins.coins.remove:
+    description: Allows players to remove coins from others.
+    default: op
+  arcadecoins.coins.set:
+    description: Allows players to set the coin balance of others.
+    default: op
+  arcadecoins.coins.check:
+    description: Allows players to check the coin balance of others.
+    default: op
+  arcadecoins.coins.convert:
+    description: Allows players to open the currency conversion menu.
+    default: true
+  arcadecoins.coins.leaderboard:
+    description: Allows players to view the coin leaderboard.
+    default: true
+  arcadecoins.coins.dailyreward:
+    description: Allows players to claim their daily coin reward.
+    default: true
+  arcadecoins.coins.bwcoins:
+    description: Allows players to access BedWars coins.
+    default: true
+  arcadecoins.coins.shop:
+    description: Allows players to open the coins shop.
+    default: true

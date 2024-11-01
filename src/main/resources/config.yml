@@ -1,0 +1,28 @@
+# MySQL Database Configuration
+mysql:
+  host: "your_mysql_host"         # Replace with your MySQL host address
+  port: 3306                       # Default MySQL port
+  database: "your_database_name"   # Name of your database
+  username: "your_username"        # Your database username
+  password: "your_password"        # Your database password
+
+# Time Zone Configuration
+#if you don't know your time zone then search on Google: <your country name or your state> time zone
+timezone: "Asia/Jerusalem"      # Set your desired time zone (e.g., America/New_York)
+
+# Daily Rewards Configuration
+dailyRewardAmount: 100.0           # Amount awarded to players for daily login rewards
+# This will show in Leaderboard
+YourServerName: "YourNetwork"
+
+# Currency Conversion Rates
+ConversionRate:
+  BedWars: 10                      # Conversion rate for BedWars to Arcade Coins
+
+#      ___   __    __    __
+#      | |    /\  \ \   / /
+#      | |   /  \  \ \_/ /
+#  _   | |  / /\ \  \   /
+#  | |_|  / ____ \  | |
+#  \____/ _/     \_\ \_|
+

@@ -1,0 +1,5 @@
+currency:
+  added: "You have received {amount} BedWars currency! Your new balance is: {newBalance} currency."
+  removed: "You have successfully removed {amount} BedWars currency. Your new balance is: {newBalance} currency."
+  insufficient: "§cYou do not have enough BedWars currency to remove {amount}. Your current balance is: {currentBalance} currency."
+  balance: "Your current BedWars currency balance is: {balance} currency."
