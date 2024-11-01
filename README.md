@@ -65,10 +65,8 @@ YourServerName: "YourNetwork"
 ConversionRate:
   BedWars: 10                      # Conversion rate for BedWars to Arcade Coins
 ```
+## Messages.yml
 ```yaml
-Messages.yml
-yaml
-Copy code
 currency:
   added: "You have received {amount} BedWars currency! Your new balance is: {newBalance} currency."
   removed: "You have successfully removed {amount} BedWars currency. Your new balance is: {newBalance} currency."
