@@ -64,6 +64,8 @@ YourServerName: "YourNetwork"
 # Currency Conversion Rates
 ConversionRate:
   BedWars: 10                      # Conversion rate for BedWars to Arcade Coins
+```
+```yaml
 Messages.yml
 yaml
 Copy code
@@ -72,6 +74,7 @@ currency:
   removed: "You have successfully removed {amount} BedWars currency. Your new balance is: {newBalance} currency."
   insufficient: "§cYou do not have enough BedWars currency to remove {amount}. Your current balance is: {currentBalance} currency."
   balance: "Your current BedWars currency balance is: {balance} currency."
+```
 Commands
 Main Command:
 /coins - Main command for arcade coins.
