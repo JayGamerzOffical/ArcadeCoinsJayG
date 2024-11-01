@@ -287,7 +287,6 @@ public class ArcadeCoinsJayG extends JavaPlugin implements CommandExecutor, List
         dailyRewardsConfig.set("players." + uuid + ".lastClaim", now.format(formatter));
         saveDailyRewardsFile();
     }
-
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // Check if the sender is a player
         if (sender instanceof Player) {
@@ -327,81 +326,112 @@ public class ArcadeCoinsJayG extends JavaPlugin implements CommandExecutor, List
     private boolean handleCoinsSubCommands(CommandSender sender, String[] args) {
         switch (args[0].toLowerCase()) {
             case "add":
-                if (args.length == 3) {
-                    Player target = Bukkit.getPlayer(args[1]);
-                    if (target == null) {
-                        sender.sendMessage(ChatColor.RED + "Player not found.");
-                        return true;
+                if (sender.hasPermission("arcadecoins.coins.add")) {
+                    if (args.length == 3) {
+                        Player target = Bukkit.getPlayer(args[1]);
+                        if (target == null) {
+                            sender.sendMessage(ChatColor.RED + "Player not found.");
+                            return true;
+                        }
+                        int amount = Integer.parseInt(args[2]);
+                        addCoins(target.getUniqueId(), amount);
+                        sender.sendMessage(ChatColor.GREEN + "Added " + ChatColor.GOLD + amount + ChatColor.GREEN + " coins to " + ChatColor.AQUA + target.getName() + ChatColor.GREEN + ".");
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "Usage: /coins add <player> <amount>");
                     }
-                    int amount = Integer.parseInt(args[2]);
-                    addCoins(target.getUniqueId(), amount);
-                    sender.sendMessage(ChatColor.GREEN + "Added " + ChatColor.GOLD + amount + ChatColor.GREEN + " coins to " + ChatColor.AQUA + target.getName() + ChatColor.GREEN + ".");
                 } else {
-                    sender.sendMessage(ChatColor.RED + "Usage: /coins add <player> <amount>");
+                    sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
                 }
                 break;
 
             case "remove":
-                if (args.length == 3) {
-                    Player target = Bukkit.getPlayer(args[1]);
-                    if (target == null) {
-                        sender.sendMessage(ChatColor.RED + "Player not found.");
-                        return true;
+                if (sender.hasPermission("arcadecoins.coins.remove")) {
+                    if (args.length == 3) {
+                        Player target = Bukkit.getPlayer(args[1]);
+                        if (target == null) {
+                            sender.sendMessage(ChatColor.RED + "Player not found.");
+                            return true;
+                        }
+                        int amount = Integer.parseInt(args[2]);
+                        removeCoins(target, amount);
+                        sender.sendMessage(ChatColor.YELLOW + "Removed " + ChatColor.GOLD + amount + ChatColor.YELLOW + " coins from " + ChatColor.AQUA + target.getName() + ChatColor.YELLOW + ".");
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "Usage: /coins remove <player> <amount>");
                     }
-                    int amount = Integer.parseInt(args[2]);
-                    removeCoins(target, amount);
-                    sender.sendMessage(ChatColor.YELLOW + "Removed " + ChatColor.GOLD + amount + ChatColor.YELLOW + " coins from " + ChatColor.AQUA + target.getName() + ChatColor.YELLOW + ".");
                 } else {
-                    sender.sendMessage(ChatColor.RED + "Usage: /coins remove <player> <amount>");
+                    sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
                 }
                 break;
 
             case "set":
-                if (args.length == 3) {
-                    Player target = Bukkit.getPlayer(args[1]);
-                    if (target == null) {
-                        sender.sendMessage(ChatColor.RED + "Player not found.");
-                        return true;
+                if (sender.hasPermission("arcadecoins.coins.set")) {
+                    if (args.length == 3) {
+                        Player target = Bukkit.getPlayer(args[1]);
+                        if (target == null) {
+                            sender.sendMessage(ChatColor.RED + "Player not found.");
+                            return true;
+                        }
+                        int amount = Integer.parseInt(args[2]);
+                        setCoins(target.getUniqueId(), amount);
+                        sender.sendMessage(ChatColor.GREEN + "Set " + ChatColor.AQUA + target.getName() + ChatColor.GREEN + "'s coin balance to " + ChatColor.GOLD + amount + ChatColor.GREEN + ".");
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "Usage: /coins set <player> <amount>");
                     }
-                    int amount = Integer.parseInt(args[2]);
-                    setCoins(target.getUniqueId(), amount);
-                    sender.sendMessage(ChatColor.GREEN + "Set " + ChatColor.AQUA + target.getName() + ChatColor.GREEN + "'s coin balance to " + ChatColor.GOLD + amount + ChatColor.GREEN + ".");
                 } else {
-                    sender.sendMessage(ChatColor.RED + "Usage: /coins set <player> <amount>");
+                    sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
                 }
                 break;
 
             case "check":
-                if (args.length == 2) {
-                    Player target = Bukkit.getPlayer(args[1]);
-                    if (target == null) {
-                        sender.sendMessage(ChatColor.RED + "Player not found.");
-                        return true;
+                if (sender.hasPermission("arcadecoins.coins.check")) {
+                    if (args.length == 2) {
+                        Player target = Bukkit.getPlayer(args[1]);
+                        if (target == null) {
+                            sender.sendMessage(ChatColor.RED + "Player not found.");
+                            return true;
+                        }
+                        sender.sendMessage(ChatColor.AQUA + target.getName() + ChatColor.YELLOW + "'s balance is: " + ChatColor.GOLD + getCoins(target.getUniqueId()));
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "Usage: /coins check <player>");
                     }
-                    sender.sendMessage(ChatColor.AQUA + target.getName() + ChatColor.YELLOW + "'s balance is: " + ChatColor.GOLD + getCoins(target.getUniqueId()));
                 } else {
-                    sender.sendMessage(ChatColor.RED + "Usage: /coins check <player>");
+                    sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
                 }
                 break;
+
             case "convert":
                 if (sender instanceof Player) {
-                    conversionGUI.openConversionMenu((Player) sender);
-                    sender.sendMessage(ChatColor.BLUE + "Opening conversion menu...");
+                    if (sender.hasPermission("arcadecoins.coins.convert")) {
+                        conversionGUI.openConversionMenu((Player) sender);
+                        sender.sendMessage(ChatColor.BLUE + "Opening conversion menu...");
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
+                    }
                 } else {
                     sender.sendMessage(ChatColor.RED + "This command can only be executed by a player.");
                 }
                 break;
+
             case "bwcoins":
                 if (sender instanceof Player) {
-                    double bwcoins = getCustomCurrencyManager().getCurrency(((Player) sender).getUniqueId());
-                    sender.sendMessage(ChatColor.YELLOW + "Your BedWars Coins are: " + ChatColor.GOLD + bwcoins);
+                    if (sender.hasPermission("arcadecoins.coins.bwcoins")) {
+                        double bwcoins = getCustomCurrencyManager().getCurrency(((Player) sender).getUniqueId());
+                        sender.sendMessage(ChatColor.YELLOW + "Your BedWars Coins are: " + ChatColor.GOLD + bwcoins);
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
+                    }
                 } else {
                     sender.sendMessage(ChatColor.RED + "This command can only be executed by a player.");
                 }
                 break;
+
             case "shop":
                 if (sender instanceof Player) {
-                    sender.sendMessage(ChatColor.YELLOW + "Currently Shop is Not Available and Coming very soon.");
+                    if (sender.hasPermission("arcadecoins.coins.shop")) {
+                        sender.sendMessage(ChatColor.YELLOW + "Currently Shop is Not Available and Coming very soon.");
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
+                    }
                 } else {
                     sender.sendMessage(ChatColor.RED + "This command can only be executed by a player.");
                 }
@@ -409,31 +439,49 @@ public class ArcadeCoinsJayG extends JavaPlugin implements CommandExecutor, List
 
             case "daily":
                 if (sender instanceof Player) {
-                    claimDailyReward((Player) sender);
+                    if (sender.hasPermission("arcadecoins.coins.dailyreward")) {
+                        claimDailyReward((Player) sender);
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
+                    }
                 } else {
                     sender.sendMessage(ChatColor.RED + "This command can only be executed by a player.");
                 }
                 break;
-            case "gift":
-                if (args.length == 3) {
-                    Player player = (Player) sender;
-                    String recipientName = args[1];
-                    double amount;
 
-                    try {
-                        amount = Double.parseDouble(args[2]);
-                        coinGiftManager.giftCoins(player, recipientName, amount);
-                    } catch (NumberFormatException e) {
-                        sender.sendMessage(ChatColor.RED + "Invalid amount specified. Please enter a number.");
+            case "gift":
+                if (sender instanceof Player) {
+                    if (sender.hasPermission("arcadecoins.coins.gift")) {
+                        if (args.length == 3) {
+                            Player player = (Player) sender;
+                            String recipientName = args[1];
+                            double amount;
+
+                            try {
+                                amount = Double.parseDouble(args[2]);
+                                coinGiftManager.giftCoins(player, recipientName, amount);
+                            } catch (NumberFormatException e) {
+                                sender.sendMessage(ChatColor.RED + "Invalid amount specified. Please enter a number.");
+                            }
+                        } else {
+                            sender.sendMessage(ChatColor.RED + "Usage: /coins gift <player> <amount>");
+                        }
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
                     }
                 } else {
-                    sender.sendMessage(ChatColor.RED + "Usage: /coins gift <player> <amount>");
+                    sender.sendMessage(ChatColor.RED + "This command can only be executed by a player.");
                 }
                 break;
+
             case "top":
                 if (sender instanceof Player) {
-                    sender.sendMessage(ChatColor.DARK_GREEN + "Displaying leaderboard...");
-                    showLeaderboard((Player) sender);
+                    if (sender.hasPermission("arcadecoins.coins.leaderboard")) {
+                        sender.sendMessage(ChatColor.DARK_GREEN + "Displaying leaderboard...");
+                        showLeaderboard((Player) sender);
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
+                    }
                 } else {
                     sender.sendMessage(ChatColor.RED + "This command can only be executed by a player.");
                 }
