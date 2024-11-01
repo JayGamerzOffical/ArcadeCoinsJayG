@@ -1,12 +1,74 @@
 # ArcadeCoins
+![ArcadeCoins Logo]([https://your_image_link_here](https://www.spigotmc.org/attachments/arcade-coins-custom-currency-conversion-system-jpg.860979/))  <!-- Replace with your actual image link -->
 
+ArcadeCoins by Jay is a powerful Minecraft plugin designed to manage an in-game currency system, allowing players to earn, spend, and track their coins efficiently. This plugin integrates with a MySQL database to store player coin balances and features a user-friendly command interface.
 
-![Banner](./images/b/Arcade%20Coins%20-%20Custom%20Currency%20&%20Conversion%20System.jpg)
+## Images
 
-## **ArcadeCoins** 
-by Jay is a powerful Minecraft plugin designed to manage an in-game currency system, allowing players to earn, spend, and track their coins efficiently. This plugin integrates with a MySQL database to store player coin balances and features a user-friendly command interface.
+<details>
+  <summary>Images 1</summary>
+  ![Screenshot 2024-11-01 064054](./images/Screenshot 2024-11-01 064054.png)  <!-- Replace with your actual image link -->
+</details>
 
-YT Video Coming Soon....
+<details>
+  <summary>Images 2</summary>
+  ![Screenshot 2024-11-01 064136](./images/Screenshot 2024-11-01 064136.png)  <!-- Replace with your actual image link -->
+</details>
+
+<details>
+  <summary>Images 4</summary>
+  ![Screenshot 2024-11-01 064146](./images/Screenshot 2024-11-01 064146.png)  <!-- Replace with your actual image link -->
+</details>
+
+<details>
+  <summary>Images 3</summary>
+  ![Screenshot 2024-11-01 064241](./images/Screenshot 2024-11-01 064241.png)  <!-- Replace with your actual image link -->
+</details>
+
+<details>
+  <summary>Images 5</summary>
+  ![Screenshot 2024-11-01 064302](./images/Screenshot 2024-11-01 064302.png)  <!-- Replace with your actual image link -->
+</details>
+
+<details>
+  <summary>Images 6</summary>
+  ![Screenshot 2024-11-01 064310](./images/Screenshot 2024-11-01 064310.png)  <!-- Replace with your actual image link -->
+</details>
+
+<details>
+  <summary>Images 7</summary>
+  ![Screenshot 2024-11-01 064318](./images/Screenshot 2024-11-01 064318.png)  <!-- Replace with your actual image link -->
+</details>
+
+<details>
+  <summary>Images 8</summary>
+  ![Screenshot 2024-11-01 064325](./images/Screenshot 2024-11-01 064325.png)  <!-- Replace with your actual image link -->
+</details>
+
+<details>
+  <summary>Images 9</summary>
+  ![Screenshot 2024-11-01 064337](./images/Screenshot 2024-11-01 064337.png)  <!-- Replace with your actual image link -->
+</details>
+
+<details>
+  <summary>Images 10</summary>
+  ![Screenshot 2024-11-01 064346](./images/Screenshot 2024-11-01 064346.png)  <!-- Replace with your actual image link -->
+</details>
+
+<details>
+  <summary>Images 11</summary>
+  ![Screenshot 2024-11-01 064414](./images/Screenshot 2024-11-01 064414.png)  <!-- Replace with your actual image link -->
+</details>
+
+<details>
+  <summary>Images 12</summary>
+  ![Screenshot 2024-11-01 064504](./images/Screenshot 2024-11-01 064504.png)  <!-- Replace with your actual image link -->
+</details>
+
+<details>
+  <summary>Images 13</summary>
+  ![Screenshot 2024-11-01 064553](./images/Screenshot 2024-11-01 064553.png)  <!-- Replace with your actual image link -->
+</details>
 
 
 ## Features
@@ -46,8 +108,7 @@ YourServerName: "YourNetwork"
 # Currency Conversion Rates
 ConversionRate:
   BedWars: 10                      # Conversion rate for BedWars to Arcade Coins
-  ```
-```yaml
+Messages.yml
 currency:
   added: "You have received {amount} BedWars currency! Your new balance is: {newBalance} currency."
   removed: "You have successfully removed {amount} BedWars currency. Your new balance is: {newBalance} currency."
